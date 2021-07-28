@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Photo" ALTER COLUMN "fileKey" DROP DEFAULT;
