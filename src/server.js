@@ -48,7 +48,7 @@ const apollo = new ApolloServer({
 //CORS 설정
 const cors = require("cors")
 const corsOptions = {
-  origin: [process.env.RES_HEADER_ACCESS],
+  origin: process.env.RES_HEADER_ACCESS,
   credentials: true,
 }
 
