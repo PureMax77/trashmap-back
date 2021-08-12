@@ -45,7 +45,15 @@ const apollo = new ApolloServer({
   },
 })
 
+//CORS 설정
+const cors = require("cors")
+const corsOptions = {
+  origin: [process.env.RES_HEADER_ACCESS],
+  credentials: true,
+}
+
 const app = express() // express 선언
+app.use(cors(corsOptions)) // CORS 선언
 app.use(logger("tiny")) // 모든 요청 실시간 확인 가능
 apollo.applyMiddleware({ app }) // express를 사용해 apollo server 돌리기
 app.use("/static", express.static("uploads"))
