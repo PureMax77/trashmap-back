@@ -10,7 +10,7 @@ export default gql`
     image: String
     finish: Boolean!
     cleanCost: Int
-    type: String!
+    dumpType: String!
     createdAt: String!
     updatedAt: String!
   }
