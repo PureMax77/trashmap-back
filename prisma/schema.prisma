@@ -37,7 +37,7 @@ model T_Mountain {
   longtitude Float
   address    String
   amount     Int?
-  image      String   @default("https://trashmap-fold.s3.ap-northeast-2.amazonaws.com/TMountain-img/defaultMountain.jpg")
+  image      String?  @default("https://trashmap-fold.s3.ap-northeast-2.amazonaws.com/TMountain-img/defaultMountain.jpg")
   finish     Boolean  @default(false)
   cleanCost  Int?
   type       String   @default("더미")
