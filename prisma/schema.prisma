@@ -3,7 +3,7 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("HEROKU_POSTGRESQL_MAROON_URL")
+  url      = env("DATABASE_URL")
 }
 
 generator client {
