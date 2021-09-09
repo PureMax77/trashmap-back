@@ -8,6 +8,6 @@ export default gql`
   }
 
   type Mutation {
-    login(email: String!, password: String!): LoginResponse!
+    kakaoLogin(token: String!): LoginResponse!
   }
 `
