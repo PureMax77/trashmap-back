@@ -32,17 +32,18 @@ model User {
 }
 
 model T_Mountain {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   latitude   Float
   longtitude Float
   address    String
   amount     Int?
   image      String?
-  finish     Boolean  @default(false)
+  finish     Boolean   @default(false)
   cleanCost  Int?
-  dumpType   String   @default("더미")
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  dumpType   String    @default("더미")
+  article    Article[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 model Photo {
@@ -111,4 +112,13 @@ model Message {
   read      Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Article {
+  id           Int         @id @default(autoincrement())
+  url          String
+  tMountain    T_Mountain? @relation(fields: [t_MountainId], references: [id])
+  t_MountainId Int
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 }
