@@ -20,8 +20,6 @@ export default {
         console.log(html)
         console.log($('meta[property="og:title"]').attr("content"))
         console.log($('meta[property="og:image"]').attr("content"))
-        console.log($('meta[property="og:image:width"]').attr("content"))
-        console.log($('meta[property="og:image:height"]').attr("content"))
         console.log($('meta[property="og:description"]').attr("content"))
       })
 
