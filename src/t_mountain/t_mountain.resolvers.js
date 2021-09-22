@@ -1,44 +1,10 @@
-// import client from "../client"
+import client from "../client"
 
-// export default {
-//   User: {
-//     totalFollowing: ({ id }) =>
-//       client.user.count({
-//         where: {
-//           followers: { some: { id } },
-//         },
-//       }),
-//     totalFollowers: ({ id }) =>
-//       client.user.count({
-//         where: {
-//           following: { some: { id } },
-//         },
-//       }),
-//     isMe: ({ id }, _, { loggedInUser }) => {
-//       if (!loggedInUser) {
-//         return false
-//       }
-//       return id === loggedInUser.id
-//     },
-//     isFollowing: async ({ id }, _, { loggedInUser }) => {
-//       if (!loggedInUser) {
-//         return false
-//       }
-//       const exists = await client.user.count({
-//         where: {
-//           id: loggedInUser.id,
-//           following: {
-//             some: {
-//               id,
-//             },
-//           },
-//         },
-//       })
-//       return Boolean(exists)
-//     },
-//     photos: ({ id }) =>
-//       client.photo.findMany({
-//         where: { userId: id },
-//       }),
-//   },
-// }
+export default {
+  T_Mountain: {
+    article: ({ id }) =>
+      client.article.findMany({
+        where: { t_MountainId: id },
+      }),
+  },
+}

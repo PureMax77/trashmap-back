@@ -115,10 +115,9 @@ model Message {
 }
 
 model Article {
-  id           Int         @id @default(autoincrement())
-  url          String
-  tMountain    T_Mountain? @relation(fields: [t_MountainId], references: [id])
-  t_MountainId Int
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
+  id        Int          @id @default(autoincrement())
+  url       String
+  tMountain T_Mountain[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
 }

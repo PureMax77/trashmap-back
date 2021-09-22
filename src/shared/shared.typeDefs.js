@@ -6,4 +6,9 @@ export default gql`
     id: Int
     error: String
   }
+  type OgPreview {
+    title: String!
+    image: String!
+    description: String!
+  }
 `
