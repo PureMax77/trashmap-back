@@ -4,6 +4,7 @@ const axios = require("axios")
 
 export default {
   Article: {
+    tMountain: ({ id }) => client.t_Mountain.findMany({ where: { article: { some: { id } } } }),
     ogPreview: async ({ id }) => {
       const article = await client.article.findUnique({ where: { id } })
       let ogData = {
@@ -34,6 +35,7 @@ export default {
       // 데이터 추출
       await getHtml().then((html) => {
         const $ = cheerio.load(html.data)
+        // console.log(html)
         const description = $('meta[property="og:description"]').attr("content")
 
         ogData.title = $('meta[property="og:title"]').attr("content")
