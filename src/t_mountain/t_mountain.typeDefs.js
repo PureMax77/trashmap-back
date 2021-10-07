@@ -12,6 +12,7 @@ export default gql`
     cleanCost: Int
     dumpType: String!
     article: [Article]
+    video: [Video]
     createdAt: String!
     updatedAt: String!
   }

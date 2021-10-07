@@ -42,6 +42,7 @@ model T_Mountain {
   cleanCost  Int?
   dumpType   String    @default("더미")
   article    Article[]
+  video      Video[]
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }
@@ -115,6 +116,14 @@ model Message {
 }
 
 model Article {
+  id        Int          @id @default(autoincrement())
+  url       String
+  tMountain T_Mountain[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Video {
   id        Int          @id @default(autoincrement())
   url       String
   tMountain T_Mountain[]

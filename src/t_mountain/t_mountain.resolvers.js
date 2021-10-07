@@ -6,5 +6,9 @@ export default {
       client.article.findMany({
         where: { tMountain: { some: { id } } },
       }),
+    video: ({ id }) =>
+      client.video.findMany({
+        where: { tMountain: { some: { id } } },
+      }),
   },
 }
