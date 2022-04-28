@@ -3,16 +3,24 @@ import client from "../../client"
 
 export default {
   Mutation: {
-    createAccount: async (_, { firstName, lastName, username, email, password }) => {
+    createAccount: async (_, { username, email, password }) => {
       try {
         // username, email 중복 체크
-        const existingUser = await client.user.findFirst({
+        const existingEmail = await client.user.findFirst({
           where: {
-            OR: [{ username }, { email }],
+            email,
           },
         })
-        if (existingUser) {
-          throw new Error("같은 닉네임 또는 이메일이 이미 존재합니다.")
+        if (existingEmail) {
+          throw new Error("같은 email이 이미 존재합니다.")
+        }
+        const existingUsername = await client.user.findFirst({
+          where: {
+            username,
+          },
+        })
+        if (existingUsername) {
+          throw new Error("같은 닉네임이 이미 존재합니다.")
         }
 
         // 비밀번호 Hash
@@ -23,8 +31,6 @@ export default {
           data: {
             username,
             email,
-            firstName,
-            lastName,
             password: uglyPassword,
           },
         })
@@ -34,7 +40,7 @@ export default {
       } catch (e) {
         return {
           ok: false,
-          error: "새로운 계정을 만들 수 없습니다. "
+          error: e.message,
         }
       }
     },

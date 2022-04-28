@@ -4,13 +4,13 @@ import jwt from "jsonwebtoken"
 
 export default {
   Mutation: {
-    login: async (_, { username, password }) => {
-      // find user with args.username
-      const user = await client.user.findFirst({ where: { username } })
+    login: async (_, { email, password }) => {
+      // find user with args.email
+      const user = await client.user.findFirst({ where: { email } })
       if (!user) {
         return {
           ok: false,
-          error: "사용자가 없습니다.",
+          error: "해당 사용자가 없습니다.",
         }
       }
       // check password with args.password

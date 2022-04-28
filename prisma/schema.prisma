@@ -12,7 +12,7 @@ generator client {
 
 model User {
   id        Int       @id @default(autoincrement())
-  firstName String
+  firstName String?
   lastName  String?
   username  String    @unique
   email     String    @unique
@@ -32,17 +32,19 @@ model User {
 }
 
 model T_Mountain {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   latitude   Float
   longtitude Float
   address    String
   amount     Int?
   image      String?
-  finish     Boolean  @default(false)
+  finish     Boolean   @default(false)
   cleanCost  Int?
-  dumpType   String   @default("더미")
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  dumpType   String    @default("더미")
+  article    Article[]
+  video      Video[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 model Photo {
@@ -111,4 +113,20 @@ model Message {
   read      Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Article {
+  id        Int          @id @default(autoincrement())
+  url       String
+  tMountain T_Mountain[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+}
+
+model Video {
+  id        Int          @id @default(autoincrement())
+  url       String
+  tMountain T_Mountain[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
 }
