@@ -6,7 +6,7 @@ export default {
   Mutation: {
     editPhoto: protectedResolver(
       async (_, { id, caption }, { loggedInUser }) => {
-        // 임시코드
+        // 임시코드2
         const oldPhoto = await client.photo.findFirst({
           where: {
             id,
